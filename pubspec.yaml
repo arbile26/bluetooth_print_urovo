@@ -1,7 +1,7 @@
-name: bluetooth_print
-description: BluetoothPrint is a bluetooth plugin to help developers build bluetooth thermal printer apps for both iOS and Android.
-version: 4.2.0
-homepage: https://github.com/thon-ju/bluetooth_print
+name: bluetooth_print_urovo
+description: fork from bluetooth_print BluetoothPrint is a bluetooth plugin to help developers build bluetooth thermal printer apps for both iOS and Android.
+version: 4.2.1
+homepage: https://github.com/xiaoq7758/bluetooth_print_urovo
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
