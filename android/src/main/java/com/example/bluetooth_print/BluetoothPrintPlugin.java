@@ -212,9 +212,13 @@ public class BluetoothPrintPlugin implements FlutterPlugin, ActivityAware, Metho
                 result.success(destroy());
                 break;
             case "print":
+                print(call, result, DeviceConnFactoryManager.getDeviceConnFactoryManagers().get(curMacAddress).getCurrentPrinterCommand());
+                break;
             case "printReceipt":
+                print(call, result, PrinterCommand.ESC);
+                break;
             case "printLabel":
-                print(call, result);
+                print(call, result, PrinterCommand.TSC);
                 break;
             case "printTest":
                 printTest(result);
@@ -362,15 +366,15 @@ public class BluetoothPrintPlugin implements FlutterPlugin, ActivityAware, Metho
     private boolean disconnect() {
         DeviceConnFactoryManager deviceConnFactoryManager = DeviceConnFactoryManager.getDeviceConnFactoryManagers().get(curMacAddress);
         if (deviceConnFactoryManager != null && deviceConnFactoryManager.mPort != null) {
-            if (deviceConnFactoryManager.reader != null){
+            if (deviceConnFactoryManager.reader != null) {
                 deviceConnFactoryManager.reader.cancel();
+            }
+            deviceConnFactoryManager.closePort();
+            deviceConnFactoryManager.mPort = null;
         }
-        deviceConnFactoryManager.closePort();
-        deviceConnFactoryManager.mPort = null;
-    }
 
-    return true;
-}
+        return true;
+    }
 
     private boolean destroy() {
         DeviceConnFactoryManager.closeAllPort();
@@ -410,7 +414,7 @@ public class BluetoothPrintPlugin implements FlutterPlugin, ActivityAware, Metho
     }
 
     @SuppressWarnings("unchecked")
-    private void print(MethodCall call, Result result) {
+    private void print(MethodCall call, Result result, final PrinterCommand printerCommand) {
         Map<String, Object> args = call.arguments();
 
         final DeviceConnFactoryManager deviceConnFactoryManager = DeviceConnFactoryManager.getDeviceConnFactoryManagers().get(curMacAddress);
@@ -430,8 +434,7 @@ public class BluetoothPrintPlugin implements FlutterPlugin, ActivityAware, Metho
                 @Override
                 public void run() {
                     assert deviceConnFactoryManager != null;
-                    PrinterCommand printerCommand = deviceConnFactoryManager.getCurrentPrinterCommand();
-
+                    // PrinterCommand printerCommand = deviceConnFactoryManager.getCurrentPrinterCommand();
                     if (printerCommand == PrinterCommand.ESC) {
                         Log.e(TAG, "Print Mode:ESC");
                         deviceConnFactoryManager.sendDataImmediately(PrintContent.mapToReceipt(config, list));
