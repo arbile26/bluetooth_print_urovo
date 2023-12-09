@@ -37,60 +37,60 @@ public class DeviceConnFactoryManager {
 
     private boolean isOpenPort;
     /**
-     * ESC²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬Ö¸Áî
+     * ESCæŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€æŒ‡ä»¤
      */
     private final byte[] esc = {0x10, 0x04, 0x02};
 
     /**
-     * ESC²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ È±Ö½×´Ì¬
+     * ESCæŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ ç¼ºçº¸çŠ¶æ€
      */
     private static final int ESC_STATE_PAPER_ERR = 0x20;
 
     /**
-     * ESCÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»ú¿ª¸Ç×´Ì¬
+     * ESCæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºå¼€ç›–çŠ¶æ€
      */
     private static final int ESC_STATE_COVER_OPEN = 0x04;
 
     /**
-     * ESCÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»ú±¨´í×´Ì¬
+     * ESCæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºæŠ¥é”™çŠ¶æ€
      */
     private static final int ESC_STATE_ERR_OCCURS = 0x40;
 
     /**
-     * TSC²éÑ¯´òÓ¡»ú×´Ì¬Ö¸Áî
+     * TSCæŸ¥è¯¢æ‰“å°æœºçŠ¶æ€æŒ‡ä»¤
      */
     private final byte[] tsc = {0x1b, '!', '?'};
 
     /**
-     * TSCÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»úÈ±Ö½×´Ì¬
+     * TSCæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºç¼ºçº¸çŠ¶æ€
      */
     private static final int TSC_STATE_PAPER_ERR = 0x04;
 
     /**
-     * TSCÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»ú¿ª¸Ç×´Ì¬
+     * TSCæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºå¼€ç›–çŠ¶æ€
      */
     private static final int TSC_STATE_COVER_OPEN = 0x01;
 
     /**
-     * TSCÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»ú³ö´í×´Ì¬
+     * TSCæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºå‡ºé”™çŠ¶æ€
      */
     private static final int TSC_STATE_ERR_OCCURS = 0x80;
 
     private final byte[] cpcl={0x1b,0x68};
 
     /**
-     * CPCLÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»úÈ±Ö½×´Ì¬
+     * CPCLæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºç¼ºçº¸çŠ¶æ€
      */
     private static final int CPCL_STATE_PAPER_ERR = 0x01;
     /**
-     * CPCLÖ¸Áî²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬ ´òÓ¡»ú¿ª¸Ç×´Ì¬
+     * CPCLæŒ‡ä»¤æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€ æ‰“å°æœºå¼€ç›–çŠ¶æ€
      */
     private static final int CPCL_STATE_COVER_OPEN = 0x02;
 
     private byte[] sendCommand;
 
     /**
-     * ÅÐ¶Ï´òÓ¡»úËùÊ¹ÓÃÖ¸ÁîÊÇ·ñÊÇESCÖ¸Áî
+     * åˆ¤æ–­æ‰“å°æœºæ‰€ä½¿ç”¨æŒ‡ä»¤æ˜¯å¦æ˜¯ESCæŒ‡ä»¤
      */
     private PrinterCommand currentPrinterCommand;
     public static final byte FLAG = 0x10;
@@ -111,13 +111,13 @@ public class DeviceConnFactoryManager {
     private final int CPCL = 2;
 
     public enum CONN_METHOD {
-        //À¶ÑÀÁ¬½Ó
+        //è“ç‰™è¿žæŽ¥
         BLUETOOTH("BLUETOOTH"),
-        //USBÁ¬½Ó
+        //USBè¿žæŽ¥
         USB("USB"),
-        //wifiÁ¬½Ó
+        //wifiè¿žæŽ¥
         WIFI("WIFI"),
-        //´®¿ÚÁ¬½Ó
+        //ä¸²å£è¿žæŽ¥
         SERIAL_PORT("SERIAL_PORT");
 
         private final String name;
@@ -137,7 +137,7 @@ public class DeviceConnFactoryManager {
     }
 
     /**
-     * ´ò¿ª¶Ë¿Ú
+     * æ‰“å¼€ç«¯å£
      */
     public void openPort() {
         DeviceConnFactoryManager deviceConnFactoryManager = deviceConnFactoryManagers.get(macAddress);
@@ -151,7 +151,7 @@ public class DeviceConnFactoryManager {
             isOpenPort = deviceConnFactoryManager.mPort.openPort();
         }
 
-        //¶Ë¿Ú´ò¿ª³É¹¦ºó£¬¼ì²éÁ¬½Ó´òÓ¡»úËùÊ¹ÓÃµÄ´òÓ¡»úÖ¸ÁîESC¡¢TSC
+        //ç«¯å£æ‰“å¼€æˆåŠŸåŽï¼Œæ£€æŸ¥è¿žæŽ¥æ‰“å°æœºæ‰€ä½¿ç”¨çš„æ‰“å°æœºæŒ‡ä»¤ESCã€TSC
         if (isOpenPort) {
             queryCommand();
         } else {
@@ -163,39 +163,39 @@ public class DeviceConnFactoryManager {
     }
 
     /**
-     * ²éÑ¯µ±Ç°Á¬½Ó´òÓ¡»úËùÊ¹ÓÃ´òÓ¡»úÖ¸Áî£¨ESC£¨EscCommand.java£©¡¢TSC£¨LabelCommand.java£©£©
+     * æŸ¥è¯¢å½“å‰è¿žæŽ¥æ‰“å°æœºæ‰€ä½¿ç”¨æ‰“å°æœºæŒ‡ä»¤ï¼ˆESCï¼ˆEscCommand.javaï¼‰ã€TSCï¼ˆLabelCommand.javaï¼‰ï¼‰
      */
     private void queryCommand() {
-        //¿ªÆô¶ÁÈ¡´òÓ¡»ú·µ»ØÊý¾ÝÏß³Ì
+        //å¼€å¯è¯»å–æ‰“å°æœºè¿”å›žæ•°æ®çº¿ç¨‹
         reader = new PrinterReader();
-        reader.start(); //¶ÁÈ¡Êý¾ÝÏß³Ì
-        //²éÑ¯´òÓ¡»úËùÊ¹ÓÃÖ¸Áî
-        queryPrinterCommand(); //Ð¡Æ±»úÁ¬½Ó²»ÉÏ  ×¢ÊÍÕâÐÐ£¬Ìí¼ÓÏÂÃæÄÇÈýÐÐ´úÂë¡£Ê¹ÓÃESCÖ¸Áî
+        reader.start(); //è¯»å–æ•°æ®çº¿ç¨‹
+        //æŸ¥è¯¢æ‰“å°æœºæ‰€ä½¿ç”¨æŒ‡ä»¤
+        queryPrinterCommand(); //å°ç¥¨æœºè¿žæŽ¥ä¸ä¸Š  æ³¨é‡Šè¿™è¡Œï¼Œæ·»åŠ ä¸‹é¢é‚£ä¸‰è¡Œä»£ç ã€‚ä½¿ç”¨ESCæŒ‡ä»¤
     }
 
     /**
-     * »ñÈ¡¶Ë¿ÚÁ¬½Ó·½Ê½
+     * èŽ·å–ç«¯å£è¿žæŽ¥æ–¹å¼
      */
     public CONN_METHOD getConnMethod() {
         return connMethod;
     }
 
     /**
-     * »ñÈ¡¶Ë¿Ú´ò¿ª×´Ì¬£¨true ´ò¿ª£¬false Î´´ò¿ª£©
+     * èŽ·å–ç«¯å£æ‰“å¼€çŠ¶æ€ï¼ˆtrue æ‰“å¼€ï¼Œfalse æœªæ‰“å¼€ï¼‰
      */
     public boolean getConnState() {
         return isOpenPort;
     }
 
     /**
-     * »ñÈ¡Á¬½ÓÀ¶ÑÀµÄÎïÀíµØÖ·
+     * èŽ·å–è¿žæŽ¥è“ç‰™çš„ç‰©ç†åœ°å€
      */
     public String getMacAddress() {
         return macAddress;
     }
 
     /**
-     * ¹Ø±Õ¶Ë¿Ú
+     * å…³é—­ç«¯å£
      */
     public void closePort() {
         if (this.mPort != null) {
@@ -233,7 +233,7 @@ public class DeviceConnFactoryManager {
     }
 
     /**
-     * »ñÈ¡µ±Ç°´òÓ¡»úÖ¸Áî
+     * èŽ·å–å½“å‰æ‰“å°æœºæŒ‡ä»¤
      *
      * @return PrinterCommand
      */
@@ -272,7 +272,7 @@ public class DeviceConnFactoryManager {
         }
         try {
             this.mPort.writeDataImmediately(data, 0, data.size());
-        } catch (Exception e) {//Òì³£ÖÐ¶Ï·¢ËÍ
+        } catch (Exception e) {//å¼‚å¸¸ä¸­æ–­å‘é€
             mHandler.obtainMessage(Constant.abnormal_Disconnection).sendToTarget();
 //            e.printStackTrace();
 
@@ -286,7 +286,7 @@ public class DeviceConnFactoryManager {
             }
             try {
                 this.mPort.writeDataImmediately(datas, 0, datas.size());
-            } catch (IOException e) {//Òì³£ÖÐ¶Ï
+            } catch (IOException e) {//å¼‚å¸¸ä¸­æ–­
                 mHandler.obtainMessage(Constant.abnormal_Disconnection).sendToTarget();
             }
         }
@@ -311,21 +311,21 @@ public class DeviceConnFactoryManager {
     }
 
     /**
-     * ²éÑ¯´òÓ¡»úµ±Ç°Ê¹ÓÃµÄÖ¸Áî£¨ESC¡¢CPCL¡¢TSC¡¢£©
+     * æŸ¥è¯¢æ‰“å°æœºå½“å‰ä½¿ç”¨çš„æŒ‡ä»¤ï¼ˆESCã€CPCLã€TSCã€ï¼‰
      */
     private void queryPrinterCommand() {
         queryPrinterCommandFlag = TSC;
         ThreadPool.getInstantiation().addSerialTask(new Runnable() {
             @Override
             public void run() {
-                //¿ªÆô¼ÆÊ±Æ÷£¬¸ô2000ºÁÃëÃ»ÓÐÃ»·µ»ØÖµÊ±·¢ËÍ²éÑ¯´òÓ¡»ú×´Ì¬Ö¸Áî£¬ÏÈ·¢Æ±¾Ý£¬Ãæµ¥£¬±êÇ©
+                //å¼€å¯è®¡æ—¶å™¨ï¼Œéš”2000æ¯«ç§’æ²¡æœ‰æ²¡è¿”å›žå€¼æ—¶å‘é€æŸ¥è¯¢æ‰“å°æœºçŠ¶æ€æŒ‡ä»¤ï¼Œå…ˆå‘ç¥¨æ®ï¼Œé¢å•ï¼Œæ ‡ç­¾
                 final ThreadFactoryBuilder threadFactoryBuilder = new ThreadFactoryBuilder("Timer");
                 final ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1, threadFactoryBuilder);
                 scheduledExecutorService.scheduleAtFixedRate(threadFactoryBuilder.newThread(new Runnable() {
                     @Override
                     public void run() {
                         if (currentPrinterCommand == null && queryPrinterCommandFlag > TSC) {
-                            if (reader != null) {//ÈýÖÖ×´Ì¬£¬²éÑ¯ÎÞ·µ»ØÖµ£¬·¢ËÍÁ¬½ÓÊ§°Ü¹ã²¥
+                            if (reader != null) {//ä¸‰ç§çŠ¶æ€ï¼ŒæŸ¥è¯¢æ— è¿”å›žå€¼ï¼Œå‘é€è¿žæŽ¥å¤±è´¥å¹¿æ’­
                                 reader.cancel();
                                 mPort.closePort();
                                 isOpenPort = false;
@@ -341,15 +341,15 @@ public class DeviceConnFactoryManager {
                         }
                         switch (queryPrinterCommandFlag) {
                             case ESC:
-                                //·¢ËÍESC²éÑ¯´òÓ¡»ú×´Ì¬Ö¸Áî
+                                //å‘é€ESCæŸ¥è¯¢æ‰“å°æœºçŠ¶æ€æŒ‡ä»¤
                                 sendCommand = esc;
                                 break;
                             case TSC:
-                                //·¢ËÍESC²éÑ¯´òÓ¡»ú×´Ì¬Ö¸Áî
+                                //å‘é€ESCæŸ¥è¯¢æ‰“å°æœºçŠ¶æ€æŒ‡ä»¤
                                 sendCommand = tsc;
                                 break;
                             case CPCL:
-                                //·¢ËÍCPCL²éÑ¯´òÓ¡»ú×´Ì¬Ö¸Áî
+                                //å‘é€CPCLæŸ¥è¯¢æ‰“å°æœºçŠ¶æ€æŒ‡ä»¤
                                 sendCommand = cpcl;
                                 break;
                             default:
@@ -379,7 +379,7 @@ public class DeviceConnFactoryManager {
         public void run() {
             try {
                 while (isRun && mPort != null) {
-                    //¶ÁÈ¡´òÓ¡»ú·µ»ØÐÅÏ¢,´òÓ¡»úÃ»ÓÐ·µ»ØÖ½·µ»Ø-1
+                    //è¯»å–æ‰“å°æœºè¿”å›žä¿¡æ¯,æ‰“å°æœºæ²¡æœ‰è¿”å›žçº¸è¿”å›ž-1
                     Log.e(TAG,"******************* wait read ");
                     int len = mPort.getInputStream().read(buffer);
                     Log.e(TAG,"******************* read "+len);
@@ -387,13 +387,13 @@ public class DeviceConnFactoryManager {
                         Message message = Message.obtain();
                         message.what = READ_DATA;
                         Bundle bundle = new Bundle();
-                        bundle.putInt(READ_DATA_CNT, len); //Êý¾Ý³¤¶È
-                        bundle.putByteArray(READ_BUFFER_ARRAY, buffer); //Êý¾Ý
+                        bundle.putInt(READ_DATA_CNT, len); //æ•°æ®é•¿åº¦
+                        bundle.putByteArray(READ_BUFFER_ARRAY, buffer); //æ•°æ®
                         message.setData(bundle);
                         mHandler.sendMessage(message);
                     }
                 }
-            } catch (Exception e) {//Òì³£¶Ï¿ª
+            } catch (Exception e) {//å¼‚å¸¸æ–­å¼€
                 if (deviceConnFactoryManagers.get(macAddress) != null) {
                     closePort();
                     mHandler.obtainMessage(Constant.abnormal_Disconnection).sendToTarget();
@@ -411,35 +411,35 @@ public class DeviceConnFactoryManager {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case Constant.abnormal_Disconnection://Òì³£¶Ï¿ªÁ¬½Ó
+                case Constant.abnormal_Disconnection://å¼‚å¸¸æ–­å¼€è¿žæŽ¥
                     Log.d(TAG, "******************* abnormal disconnection");
                     sendStateBroadcast(Constant.abnormal_Disconnection);
                     break;
-                case DEFAUIT_COMMAND://Ä¬ÈÏÄ£Ê½
+                case DEFAUIT_COMMAND://é»˜è®¤æ¨¡å¼
 
                     break;
                 case READ_DATA:
-                    int cnt = msg.getData().getInt(READ_DATA_CNT); //Êý¾Ý³¤¶È >0;
-                    byte[] buffer = msg.getData().getByteArray(READ_BUFFER_ARRAY);  //Êý¾Ý
-                    //ÕâÀïÖ»¶Ô²éÑ¯×´Ì¬·µ»ØÖµ×ö´¦Àí£¬ÆäËü·µ»ØÖµ¿É²Î¿¼±à³ÌÊÖ²áÀ´½âÎö
+                    int cnt = msg.getData().getInt(READ_DATA_CNT); //æ•°æ®é•¿åº¦ >0;
+                    byte[] buffer = msg.getData().getByteArray(READ_BUFFER_ARRAY);  //æ•°æ®
+                    //è¿™é‡Œåªå¯¹æŸ¥è¯¢çŠ¶æ€è¿”å›žå€¼åšå¤„ç†ï¼Œå…¶å®ƒè¿”å›žå€¼å¯å‚è€ƒç¼–ç¨‹æ‰‹å†Œæ¥è§£æž
                     if (buffer == null) {
                         return;
                     }
-                    int result = judgeResponseType(buffer[0]); //Êý¾ÝÓÒÒÆ
+                    int result = judgeResponseType(buffer[0]); //æ•°æ®å³ç§»
                     String status = "";
                     if (sendCommand == esc) {
-                        //ÉèÖÃµ±Ç°´òÓ¡»úÄ£Ê½ÎªESCÄ£Ê½
+                        //è®¾ç½®å½“å‰æ‰“å°æœºæ¨¡å¼ä¸ºESCæ¨¡å¼
                         if (currentPrinterCommand == null) {
                             currentPrinterCommand = PrinterCommand.ESC;
                             sendStateBroadcast(CONN_STATE_CONNECTED);
-                        } else {//²éÑ¯´òÓ¡»ú×´Ì¬
-                            if (result == 0) {//´òÓ¡»ú×´Ì¬²éÑ¯
+                        } else {//æŸ¥è¯¢æ‰“å°æœºçŠ¶æ€
+                            if (result == 0) {//æ‰“å°æœºçŠ¶æ€æŸ¥è¯¢
                                 Intent intent = new Intent(ACTION_QUERY_PRINTER_STATE);
                                 intent.putExtra(DEVICE_ID, macAddress);
                                 if(mContext!=null){
                                     mContext.sendBroadcast(intent);
                                 }
-                            } else if (result == 1) {//²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬
+                            } else if (result == 1) {//æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€
                                 if ((buffer[0] & ESC_STATE_PAPER_ERR) > 0) {
                                     status += "*******************  Printer out of paper";
                                 }
@@ -453,26 +453,26 @@ public class DeviceConnFactoryManager {
                             }
                         }
                     }else if (sendCommand == tsc) {
-                        //ÉèÖÃµ±Ç°´òÓ¡»úÄ£Ê½ÎªTSCÄ£Ê½
+                        //è®¾ç½®å½“å‰æ‰“å°æœºæ¨¡å¼ä¸ºTSCæ¨¡å¼
                         if (currentPrinterCommand == null) {
                             currentPrinterCommand = PrinterCommand.TSC;
                             sendStateBroadcast(CONN_STATE_CONNECTED);
                         } else {
-                            if (cnt == 1) {//²éÑ¯´òÓ¡»úÊµÊ±×´Ì¬
+                            if (cnt == 1) {//æŸ¥è¯¢æ‰“å°æœºå®žæ—¶çŠ¶æ€
                                 if ((buffer[0] & TSC_STATE_PAPER_ERR) > 0) {
-                                    //È±Ö½
+                                    //ç¼ºçº¸
                                     status += "*******************  Printer out of paper";
                                 }
                                 if ((buffer[0] & TSC_STATE_COVER_OPEN) > 0) {
-                                    //¿ª¸Ç
+                                    //å¼€ç›–
                                     status += "*******************  Printer open cover";
                                 }
                                 if ((buffer[0] & TSC_STATE_ERR_OCCURS) > 0) {
-                                    //´òÓ¡»ú±¨´í
+                                    //æ‰“å°æœºæŠ¥é”™
                                     status += "*******************  Printer error";
                                 }
                                 Log.d(TAG, status);
-                            } else {//´òÓ¡»ú×´Ì¬²éÑ¯
+                            } else {//æ‰“å°æœºçŠ¶æ€æŸ¥è¯¢
                                 Intent intent = new Intent(ACTION_QUERY_PRINTER_STATE);
                                 intent.putExtra(DEVICE_ID, macAddress);
                                 if(mContext!=null){
@@ -487,14 +487,14 @@ public class DeviceConnFactoryManager {
                         }else {
                             if (cnt == 1) {
 
-                                if ((buffer[0] ==CPCL_STATE_PAPER_ERR)) {//È±Ö½
+                                if ((buffer[0] ==CPCL_STATE_PAPER_ERR)) {//ç¼ºçº¸
                                     status += "*******************  Printer out of paper";
                                 }
-                                if ((buffer[0] ==CPCL_STATE_COVER_OPEN)) {//¿ª¸Ç
+                                if ((buffer[0] ==CPCL_STATE_COVER_OPEN)) {//å¼€ç›–
                                     status += "*******************  Printer open cover";
                                 }
                                 Log.d(TAG, status);
-                            } else {//´òÓ¡»ú×´Ì¬²éÑ¯
+                            } else {//æ‰“å°æœºçŠ¶æ€æŸ¥è¯¢
                                 Intent intent = new Intent(ACTION_QUERY_PRINTER_STATE);
                                 intent.putExtra(DEVICE_ID, macAddress);
                                 if(mContext!=null){
@@ -511,19 +511,19 @@ public class DeviceConnFactoryManager {
     };
 
     /**
-     * ·¢ËÍ¹ã²¥
+     * å‘é€å¹¿æ’­
      */
     private void sendStateBroadcast(int state) {
         Intent intent = new Intent(ACTION_CONN_STATE);
         intent.putExtra(STATE, state);
         intent.putExtra(DEVICE_ID, macAddress);
         if(mContext != null){
-            mContext.sendBroadcast(intent);//´Ë´¦Èô±¨¿ÕÖ¸Õë´íÎó£¬ÐèÒªÔÚÇåµ¥ÎÄ¼þapplication±êÇ©Àï×¢²á´ËÀà£¬²Î¿¼demo
+            mContext.sendBroadcast(intent);//æ­¤å¤„è‹¥æŠ¥ç©ºæŒ‡é’ˆé”™è¯¯ï¼Œéœ€è¦åœ¨æ¸…å•æ–‡ä»¶applicationæ ‡ç­¾é‡Œæ³¨å†Œæ­¤ç±»ï¼Œå‚è€ƒdemo
         }
     }
 
     /**
-     * ÅÐ¶ÏÊÇÊµÊ±×´Ì¬£¨10 04 02£©»¹ÊÇ²éÑ¯×´Ì¬£¨1D 72 01£©
+     * åˆ¤æ–­æ˜¯å®žæ—¶çŠ¶æ€ï¼ˆ10 04 02ï¼‰è¿˜æ˜¯æŸ¥è¯¢çŠ¶æ€ï¼ˆ1D 72 01ï¼‰
      */
     private int judgeResponseType(byte r) {
         return (byte) ((r & FLAG) >> 4);
